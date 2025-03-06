@@ -8,6 +8,10 @@ import os
 import pyautogui
 import subprocess as sp
 import webbrowser
+
+# Cambiar el idioma a español
+from gtts import gTTS
+
 import imdb
 from kivy.uix import widget,image,label,boxlayout,textinput
 from kivy import clock
@@ -67,50 +71,54 @@ class Jarvis(widget.Widget):
         self.add_widget(self.circle)
         keyboard.add_hotkey('`',self.start_recording)
         
-    def take_command(self):
-            r = sr.Recognizer()
-            with sr.Microphone() as source:
-                print("Listening...")
-                r.pause_threshold = 1
-                audio = r.listen(source)
+def take_command(self):
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Escuchando...")
+        r.pause_threshold = 1
+        audio = r.listen(source)
 
-            try:
-                print("Recognizing....")
-                queri = r.recognize_google(audio, language='en-in')
-                return queri.lower()
+    try:
+        print("Reconociendo....")
+        queri = r.recognize_google(audio, language='es-ES')
+        return queri.lower()
 
-            except Exception:
-                speak("Sorry I couldn't understand. Can you please repeat that?")
-                queri = 'None'
+    except sr.UnknownValueError:
+        speak("Lo siento, no pude entender. ¿Puedes repetir eso?")
+        queri = 'None'
+    except sr.RequestError as e:
+        print(f"Error de solicitud: {e}")
+        queri = 'None'
+
                 
     def start_recording(self, *args):
-            print("recording started") 
+            print("grabación iniciada") 
             threading.Thread(target=self.run_speech_recognition).start()
-            print("recording ended") 
+            print("grabación finalizada") 
             
-            
-    def run_speech_recognition(self):
-            print('before speech rec obj')
-            r = sr.Recognizer()
-            with sr.Microphone() as source:
-                print("Listening...")
-                audio=r.listen(source) 
-                print("audio recorded")
-                
-            print("after speech rec obj") 
-            
-            try:
-                query=r.recognize_google(audio,language="en-in") 
-                print(f'Recognised: {query}')
-                clock.Clock.schedule_once(lambda dt: setattr(self.subtitles_input,'text',query))
-                self.handle_jarvis_commands(query.lower())
-                                
-            except sr.UnknownValueError:
-                print("Google speech recognition could not understand audio")
-                
-            except sr.RequestError as e:
-                print(e) 
-            return query.lower()  
+def run_speech_recognition(self):
+    print('antes del objeto de reconocimiento de voz')
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Escuchando...")
+        audio = r.listen(source)
+        print("audio grabado")
+
+    print("después del objeto de reconocimiento de voz")
+
+    try:
+        query = r.recognize_google(audio, language="es-ES")
+        print(f'Reconocido: {query}')
+        clock.Clock.schedule_once(lambda dt: setattr(self.subtitles_input, 'text', query))
+        self.handle_jarvis_commands(query.lower())
+
+    except sr.UnknownValueError:
+        print("El reconocimiento de voz de Google no pudo entender el audio")
+
+    except sr.RequestError as e:
+        print(f"Error de solicitud: {e}")
+    return query.lower()
+
         
     def update_time(self,dt):
             current_time = time.strftime('TIME\n\t%H:%M:%S')
@@ -122,7 +130,7 @@ class Jarvis(widget.Widget):
                 
             except Exception as e:
                 self.size_value = self.min_size
-                print('Warning:',e)
+                print('Advertencia:',e)
                 
             if self.size_value <= self.min_size:
                 self.size_value = self.min_size
@@ -130,7 +138,6 @@ class Jarvis(widget.Widget):
                 self.size_value = self.max_size                                     
             self.circle.size = (self.size_value,self.size_value)
             self.circle.pos = (SCREEN_WIDTH / 2 - self.circle.width / 2, SCREEN_HEIGHT / 2 - self.circle.height / 2)
-            
             
     def update_volume(self,indata,frames,time,status):
             volume_norm = np.linalg.norm(indata) * 200
@@ -170,8 +177,8 @@ class Jarvis(widget.Widget):
             response = model.generate_content(query)
             return response.text
         except Exception as e:
-            print(f"Error getting Gemini response: {e}")
-            return "I'm sorry, I couldn't process that request."
+            print(f"Error al obtener respuesta de Gemini: {e}")
+            return "Lo siento, no pude procesar esa solicitud."
             
     def handle_jarvis_commands(self,query):  
             try:
@@ -222,7 +229,7 @@ class Jarvis(widget.Widget):
                     search = self.take_command().lower()
                     results = search_on_wikipedia(search)
                     speak(f"According to wikipedia,{results}")
-                
+                 
 
                 elif "send an email" in query:
                     speak("On what email address do you want to send sir?. Please enter in the terminal")
@@ -310,4 +317,4 @@ class Jarvis(widget.Widget):
                         print(gemini_response)
                 
             except Exception as e:
-                print(e)
+                print(e)  # Imprimir el error

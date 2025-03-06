@@ -1,0 +1,59 @@
+# Instrucciones de la Aplicación Jarvis AI
+
+## Instrucciones de Configuración
+1. **Instalar Bibliotecas Requeridas**:
+   Asegúrate de tener las siguientes bibliotecas instaladas:
+   - `pyttsx3`
+   - `speech_recognition`
+   - `requests`
+   - `keyboard`
+   - `imdb`
+   - `wolframalpha`
+   - `pyautogui`
+   - `webbrowser`
+   - `kivy`
+   - `python-decouple`
+
+   Puedes instalar estas bibliotecas usando pip:
+   ```
+   pip install pyttsx3 speech_recognition requests keyboard imdb wolframalpha pyautogui kivy python-decouple
+   ```
+
+2. **Establecer Variables de Entorno**:
+   Crea un archivo `.env` en el directorio raíz del proyecto y agrega las siguientes variables:
+   ```
+   EMAIL=tu_email@ejemplo.com
+   PASSWORD=tu_contraseña_email
+   IP_ADDR_API_URL=https://api.ipify.org?format=json
+   NEWS_FETCH_API_URL=https://newsapi.org/v2/top-headlines
+   NEWS_FETCH_API_KEY=tu_clave_api_noticias
+   WEATHER_FORECAST_API_URL=https://api.openweathermap.org/data/2.5/weather
+   WEATHER_FORECAST_API_KEY=tu_clave_api_clima
+   GEMINI_API_KEY=tu_clave_api_gemini
+   SMTP_URL=smtp.tu_proveedor_email.com
+   SMTP_PORT=587
+   ```
+
+## Ejecutando la Aplicación
+Para ejecutar la aplicación, ejecuta el siguiente comando en tu terminal:
+```
+python Jarvis-AI/GUI/main_without_gui.py
+```
+
+## Instrucciones de Uso
+- **Iniciar Escucha**: Presiona `Ctrl + Alt + K` para comenzar a escuchar comandos.
+- **Pausar Escucha**: Presiona `Ctrl + Alt + P` para pausar la escucha.
+
+### Comandos Disponibles:
+- "¿Cómo estás?": Jarvis responderá con un saludo.
+- "Abrir el símbolo del sistema": Abre el símbolo del sistema.
+- "Abrir la cámara": Abre la aplicación de la cámara.
+- "Abrir el bloc de notas": Abre el Bloc de notas.
+- "Enviar un correo electrónico": Solicita detalles del correo y envía un correo electrónico.
+- "Dame noticias": Lee los titulares de noticias más recientes.
+- "Clima": Solicita el nombre de una ciudad y proporciona el informe del clima.
+- "Película": Solicita el nombre de una película y proporciona detalles sobre ella.
+
+Para cualquier otro comando, Jarvis intentará proporcionar una respuesta basada en la entrada.
+
+¡Disfruta usando Jarvis AI!

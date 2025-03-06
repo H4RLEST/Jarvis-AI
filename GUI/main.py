@@ -3,9 +3,16 @@ load_dotenv()
 from kivy import app, clock
 from jarvis import Jarvis
 
+# Cambiar el idioma a español
+import locale
+locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')
+
+
 class MykivyApp(app.App):
     def build(self):
-        jarvis = Jarvis()
+        jarvis = Jarvis()  # Inicializar Jarvis sin el argumento de lenguaje
+
+
         jarvis.start_listening()
         
         self.update_event = clock.Clock.schedule_interval(jarvis.update_circle,1/60)
@@ -16,4 +23,4 @@ class MykivyApp(app.App):
     
 if __name__ == '__main__':
     MykivyApp = MykivyApp()
-    MykivyApp.run()    
+    MykivyApp.run()

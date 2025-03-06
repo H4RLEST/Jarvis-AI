@@ -17,9 +17,16 @@ WEATHER_FORECAST_API_URL = os.environ.get("WEATHER_FORECAST_API_URL")
 WEATHER_FORECAST_API_KEY = os.environ.get("WEATHER_FORECAST_API_KEY")
 GEMINI_API_KEY=os.environ.get("GEMINI_API_KEY")
 
-
 SMTP_URL = os.environ.get("SMTP_URL")
 SMTP_PORT = os.environ.get("SMTP_PORT")
 
 SCREEN_WIDTH = Config.getint('graphics','width')
 SCREEN_HEIGHT = Config.getint('graphics','height')
+
+random_text = [
+    "Estoy aquí para ayudarte.",
+    "¿En qué puedo asistirte hoy?",
+    "Siempre listo para ayudar.",
+    "¿Qué necesitas, amigo?",
+    "Estoy a tu servicio."
+]

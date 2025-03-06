@@ -10,10 +10,23 @@ import pyautogui
 import webbrowser
 import time
 
+# Cambiar el idioma a español
+def speak(text):
+    engine = pyttsx3.init()
+    engine.say(text)
+    engine.runAndWait()
+def speak(text):
+    engine = pyttsx3.init()
+    engine.setProperty('voice', 'spanish')  # Cambiar la voz a español
+    engine.say(text)
+    engine.runAndWait()
+
+
 from datetime import datetime
 from decouple import config
 from random import choice
-from const import random_text
+from constants import random_text
+
 from online import find_my_ip, search_on_google, search_on_wikipedia, youtube, send_email, get_news, weather_forecast
 
 engine = pyttsx3.init()
@@ -22,8 +35,10 @@ engine.setProperty('rate', 220)
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
 
-USER = config('USER')
-HOSTNAME = config('BOT')
+USER = config('USER', default='TestUser')
+
+HOSTNAME = config('BOT', default='Asistente')
+
 
 
 def speak(text):
@@ -61,7 +76,7 @@ keyboard.add_hotkey('ctrl+alt+k', start_listening)
 keyboard.add_hotkey('ctrl+alt+p', pause_listening)
 
 
-def take_command():
+def take_command(self):
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listening...")
@@ -82,9 +97,13 @@ def take_command():
                 speak("Have a good day sir!")
             exit()
 
-    except Exception:
+    except sr.UnknownValueError:
         speak("Sorry I couldn't understand. Can you please repeat that?")
         queri = 'None'
+    except sr.RequestError as e:
+        print(f"Error de solicitud: {e}")
+        queri = 'None'
+
     return queri
 
 
@@ -92,9 +111,10 @@ if __name__ == '__main__':
     greet_me()
     while True:
         if listening:
-            query = take_command().lower()
+            query = self.take_command().lower()
             if "how are you" in query:
                 speak("I am absolutely fine sir. What about you")
+
 
             elif "open command prompt" in query:
                 speak("Opening command prompt")

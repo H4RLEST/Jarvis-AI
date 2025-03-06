@@ -1,0 +1,59 @@
+# Jarvis AI Application Instructions
+
+## Setup Instructions
+1. **Install Required Libraries**:
+   Ensure you have the following libraries installed:
+   - `pyttsx3`
+   - `speech_recognition`
+   - `requests`
+   - `keyboard`
+   - `imdb`
+   - `wolframalpha`
+   - `pyautogui`
+   - `webbrowser`
+   - `kivy`
+   - `python-decouple`
+
+   You can install these libraries using pip:
+   ```
+   pip install pyttsx3 speech_recognition requests keyboard imdb wolframalpha pyautogui kivy python-decouple
+   ```
+
+2. **Set Environment Variables**:
+   Create a `.env` file in the project root directory and add the following variables:
+   ```
+   EMAIL=your_email@example.com
+   PASSWORD=your_email_password
+   IP_ADDR_API_URL=https://api.ipify.org?format=json
+   NEWS_FETCH_API_URL=https://newsapi.org/v2/top-headlines
+   NEWS_FETCH_API_KEY=your_news_api_key
+   WEATHER_FORECAST_API_URL=https://api.openweathermap.org/data/2.5/weather
+   WEATHER_FORECAST_API_KEY=your_weather_api_key
+   GEMINI_API_KEY=your_gemini_api_key
+   SMTP_URL=smtp.your_email_provider.com
+   SMTP_PORT=587
+   ```
+
+## Running the Application
+To run the application, execute the following command in your terminal:
+```
+python Jarvis-AI/GUI/main_without_gui.py
+```
+
+## Usage Instructions
+- **Start Listening**: Press `Ctrl + Alt + K` to start listening for commands.
+- **Pause Listening**: Press `Ctrl + Alt + P` to pause listening.
+
+### Available Commands:
+- "How are you": Jarvis will respond with a greeting.
+- "Open command prompt": Opens the command prompt.
+- "Open camera": Opens the camera application.
+- "Open notepad": Opens Notepad.
+- "Send an email": Prompts for email details and sends an email.
+- "Tell me news": Reads out the latest news headlines.
+- "Weather": Prompts for a city name and provides the weather report.
+- "Movie": Prompts for a movie name and provides details about it.
+
+For any other commands, Jarvis will attempt to provide a response based on the input.
+
+Enjoy using Jarvis AI!
