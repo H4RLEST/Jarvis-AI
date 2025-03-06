@@ -2,7 +2,8 @@ import os
 import subprocess
 
 # Configura la URL de tu repositorio de GitHub
-REPO_URL = "URL_DEL_REPOSITORIO"  # Reemplaza esto con la URL de tu repositorio
+REPO_URL = "https://github.com/H4RLEST/Jarvis-AI"  # Reemplaza esto con la URL de tu repositorio
+
 
 # Inicializa el repositorio si no está inicializado
 if not os.path.exists('.git'):

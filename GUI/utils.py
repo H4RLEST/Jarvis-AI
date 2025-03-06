@@ -20,9 +20,6 @@ from constants import (
     WEATHER_FORECAST_API_KEY,
 )
 
-
-
-
 def speak(text):
     tts = gtts.gTTS(text,lang='en')
     tts.save("output.wav")
@@ -37,19 +34,15 @@ def find_my_ip():
     ip_address = requests.get('https://api64.ipify.org?format=json').json()
     return ip_address["ip"]
 
-
 def search_on_wikipedia(query):
     results = wikipedia.summary(query, sentences=2)
     return results
 
-
 def search_on_google(query):
     kit.search(query)
 
-
 def youtube(video):
     kit.playonyt(video)
-
 
 def send_email(receiver_add, subject, message):
     try:
@@ -59,17 +52,18 @@ def send_email(receiver_add, subject, message):
         email['From'] = EMAIL
 
         email.set_content(message)
-        s = smtplib.SMTP(SMTP_URL, SMTP_PORT)
-        s.starttls()
-        s.login(EMAIL, PASSWORD)
-        s.send_message(email)
-        s.close()
+        
+        # Establecer conexión SMTP
+        with smtplib.SMTP(SMTP_URL, SMTP_PORT) as s:
+            s.starttls()
+            s.login(EMAIL, PASSWORD)
+            s.send_message(email)
+
         return True
 
     except Exception as e:
         print(e)
         return False
-
 
 def get_news():
     news_headline = []
@@ -85,7 +79,6 @@ def get_news():
     for article in articles:
         news_headline.append(article["title"])
     return news_headline[:6]
-
 
 def weather_forecast(city):
     res = requests.get(

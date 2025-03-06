@@ -1,0 +1,20 @@
+### Plan (Traducción):
+
+1. **Actualizar `upload_to_github.py`**:
+   - Reemplazar el marcador de posición `REPO_URL` con la URL real del repositorio de GitHub del usuario para asegurar que el script pueda enviar cambios al lugar correcto.
+
+2. **Revisar y Modificar `jarvis.py`**:
+   - Analizar la lógica de manejo de comandos para asegurarse de que se alinee con los requisitos del usuario. Esto puede implicar agregar nuevos comandos o modificar los existentes según las necesidades del usuario.
+
+3. **Mejorar `utils.py`**:
+   - Revisar las funciones utilitarias para asegurarse de que funcionen como se espera y modificarlas si es necesario para apoyar cualquier nueva característica o cambio solicitado por el usuario.
+
+4. **Ajustar `jarvis_button.py`**:
+   - Si el usuario desea cambiar el comportamiento o la apariencia del botón, se realizarán modificaciones en la clase `JarvisButton` para acomodar esos cambios.
+
+5. **Pruebas**:
+   - Después de realizar los cambios necesarios, probar a fondo la aplicación para asegurarse de que todas las funcionalidades funcionen como se espera y que el código esté correctamente desempaquetado y funcional.
+
+### Pasos a seguir:
+- Verificar los cambios en los archivos.
+- Confirmar con el usuario si hay requisitos o modificaciones adicionales.
