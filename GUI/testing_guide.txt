@@ -1,0 +1,55 @@
+# Guía de Pruebas para la Aplicación Jarvis
+
+## Introducción
+Esta guía te ayudará a realizar pruebas en la aplicación Jarvis para asegurarte de que todas las funcionalidades estén operativas.
+
+## Requisitos Previos
+- Asegúrate de tener Python y Kivy instalados en tu sistema.
+- Verifica que todas las dependencias necesarias estén instaladas.
+
+## Pasos para Realizar Pruebas desde CMD y PowerShell con Ejemplos
+
+
+1. **Iniciar la Aplicación**
+   - Abre CMD o PowerShell y navega al directorio donde se encuentra `jarvis.py` usando el comando `cd`. Por ejemplo:
+     - En CMD:
+       ```
+       cd C:\ruta\al\directorio\GUI
+       ```
+     - En PowerShell:
+       ```
+       Set-Location -Path C:\ruta\al\directorio\GUI
+       ```
+
+   - Ejecuta el siguiente comando en la terminal:
+     ```
+     python GUI/jarvis.py
+     ```
+
+     ```
+     python GUI/jarvis.py
+     ```
+
+2. **Probar el Reconocimiento de Voz desde CMD y PowerShell**
+   - Una vez que la aplicación esté en funcionamiento, asegúrate de que el micrófono esté habilitado.
+   - Usa comandos de voz como:
+     - "abrir el símbolo del sistema"
+     - "dime las noticias"
+     - "buscar en google [tu consulta]"
+   - Observa si la aplicación responde correctamente a cada comando.
+
+3. **Verificar Funcionalidades Específicas desde CMD y PowerShell**
+   - **Abrir Aplicaciones**: Prueba abrir aplicaciones como el Bloc de Notas o Discord.
+   - **Enviar Correos Electrónicos**: Intenta enviar un correo electrónico usando el comando correspondiente y verifica que se envíe correctamente.
+   - **Obtener Noticias**: Usa el comando para obtener las últimas noticias y asegúrate de que se lean correctamente.
+   - **Consultar el Clima**: Pide el clima de una ciudad específica y verifica que la información sea precisa.
+
+4. **Revisar Errores en la Consola**
+   - Mantén un ojo en la consola para cualquier mensaje de error que pueda aparecer mientras pruebas las funcionalidades.
+   - Si encuentras errores, anótalos para su posterior revisión.
+
+5. **Finalizar la Prueba**
+   - Una vez que hayas terminado de probar todas las funcionalidades, puedes cerrar la aplicación.
+
+## Conclusión
+Siguiendo estos pasos, podrás verificar que la aplicación Jarvis funcione correctamente. Si encuentras algún problema, revisa los logs de Kivy para obtener más información sobre los errores.

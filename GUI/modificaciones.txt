@@ -1,0 +1,4 @@
+Modificaciones en main_without_gui.py:
+
+1. Se actualizó la línea de definición de la variable USER:
+   USER = config('USER', default='TestUser')
