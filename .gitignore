@@ -1,0 +1,3 @@
+# Ignorar archivos y carpetas innecesarios
+# Ignorar la carpeta venv
+venv/
